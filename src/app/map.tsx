@@ -1,17 +1,16 @@
-import { StaticImageData } from "next/image";
 import { Location, MoveMap, ToRoom } from "./types";
-import p1_1d from "../../public/art/p1_1d.png";
-import p1_1d2 from "../../public/art/p1_1d2.png";
-import p1_2d from "../../public/art/p1_2d.png";
-import p1_2d2 from "../../public/art/p1_2d2.png";
-import p2_1d from "../../public/art/p2_1d.png";
-import p2_1d2 from "../../public/art/p2_1d2.png";
-import p2_2d from "../../public/art/p2_2d.png";
-import p2_2d2 from "../../public/art/p2_2d2.png";
-import p3_1d3 from "../../public/art/p3_1d3.png";
-import p3_2d from "../../public/art/p3_2d.png";
-import p3_2d2 from "../../public/art/p3_2d2.png";
-import p3_2d3 from "../../public/art/p3_2d3.png";
+// import p1_1d from "../../public/art/p1_1d.png";
+// import p1_1d2 from "../../public/art/p1_1d2.png";
+// import p1_2d from "../../public/art/p1_2d.png";
+// import p1_2d2 from "../../public/art/p1_2d2.png";
+// import p2_1d from "../../public/art/p2_1d.png";
+// import p2_1d2 from "../../public/art/p2_1d2.png";
+// import p2_2d from "../../public/art/p2_2d.png";
+// import p2_2d2 from "../../public/art/p2_2d2.png";
+// import p3_1d3 from "../../public/art/p3_1d3.png";
+// import p3_2d from "../../public/art/p3_2d.png";
+// import p3_2d2 from "../../public/art/p3_2d2.png";
+// import p3_2d3 from "../../public/art/p3_2d3.png";
 
 export const moveResult: ToRoom = {
   // cobra look
@@ -102,7 +101,7 @@ export const moveResult: ToRoom = {
   30: { position: 6, orientation: 1 },
   244: { position: 11, orientation: 1 },
   239: { position: 8, orientation: 0 },
-  123: { position: 13, orientation: 2 },
+  123: { position: 13, orientation: 3 },
   163: { position: 9, orientation: 0 },
   165: { position: 12, orientation: 1 },
   285: { position: 13, orientation: 0 },

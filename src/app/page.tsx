@@ -5,11 +5,14 @@ import { useState } from "react";
 import Selection from "./Selection";
 import { Game } from "./Game";
 import { Codename } from "./types";
-import cover from "../../public/backgrounds/cover.png";
-import Image from "next/image";
-import cobraWin from "../../public/backgrounds/cobra_win.png";
-import mongooseWin from "../../public/backgrounds/mongoose_win.png";
-import loseArt from "../../public/backgrounds/lose_art.png";
+// import cover from "../../public/backgrounds/cover.png";
+// import cobraWin from "../../public/backgrounds/cobra_win.png";
+// import mongooseWin from "../../public/backgrounds/mongoose_win.png";
+// import loseArt from "../../public/backgrounds/lose_art.png";
+const cover = "https://i.imgur.com/p7j9Iq4.png";
+const cobraWin = "https://i.imgur.com/M0o31gg.png";
+const mongooseWin = "https://i.imgur.com/HkC2SFz.png";
+const loseArt = "https://i.imgur.com/lEDJWgN.png";
 
 export default function Home() {
   const [codename, setCodename] = useState<Codename | "">("");
@@ -30,7 +33,7 @@ export default function Home() {
     <main className={styles.main}>
       {showTitle && !codename && (
         <div className={styles.title}>
-          <Image
+          <img
             className={`${!showSelection && styles.blurred}`}
             alt="cover image"
             src={cover}
@@ -73,7 +76,7 @@ export default function Home() {
       )}
       {win && (
         <div className={styles.winScreen}>
-          <Image
+          <img
             alt="game end art"
             src={
               win == codename

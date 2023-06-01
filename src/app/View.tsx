@@ -1,40 +1,73 @@
 import styles from "./page.module.scss";
-import Image, { StaticImageData } from "next/image";
-import { CustomCss, ViewProps } from "./types";
-import rightTurn1d from "../../public/backgrounds/right_turn_1d.png";
-import rightTurn2d from "../../public/backgrounds/right_turn_2d.png";
-import leftTurn1d from "../../public/backgrounds/left_turn_1d.png";
-import leftTurn2d from "../../public/backgrounds/left_turn_2d.png";
-import bothTurn1d from "../../public/backgrounds/both_turn_1d.png";
-import bothTurn1dx from "../../public/backgrounds/both_turn_1dx.png";
-import bothTurn2d from "../../public/backgrounds/both_turn_2d.png";
-import bothTurn2dx from "../../public/backgrounds/both_turn_2dx.png";
-import center1d from "../../public/backgrounds/center_1d.png";
-import center2d from "../../public/backgrounds/center_2d.png";
-import center2dx from "../../public/backgrounds/center_2dx.png";
-import center3d from "../../public/backgrounds/center_3d.png";
-import center3dx from "../../public/backgrounds/center_3dx.png";
-import center3dx2 from "../../public/backgrounds/center_3dx2.png";
-import cobraFront1d from "../../public/operatives/cobra_front_1d.png";
-import cobraFront2d from "../../public/operatives/cobra_front_2d.png";
-import cobraFront3d from "../../public/operatives/cobra_front_3d.png";
-import cobraBack1d from "../../public/operatives/cobra_back_1d.png";
-import cobraBack2d from "../../public/operatives/cobra_back_2d.png";
-import cobraLeft1d from "../../public/operatives/cobra_left_1d.png";
-import cobraLeft2d from "../../public/operatives/cobra_left_2d.png";
-import cobraRight1d from "../../public/operatives/cobra_right_1d.png";
-import cobraRight2d from "../../public/operatives/cobra_right_2d.png";
-import cobraRight3d from "../../public/operatives/cobra_right_3d.png";
-import mongooseFront1d from "../../public/operatives/mongoose_front_1d.png";
-import mongooseFront2d from "../../public/operatives/mongoose_front_2d.png";
-import mongooseFront3d from "../../public/operatives/mongoose_front_3d.png";
-import mongooseBack1d from "../../public/operatives/mongoose_back_1d.png";
-import mongooseBack2d from "../../public/operatives/mongoose_back_2d.png";
-import mongooseLeft1d from "../../public/operatives/mongoose_left_1d.png";
-import mongooseLeft2d from "../../public/operatives/mongoose_left_2d.png";
-import mongooseRight1d from "../../public/operatives/mongoose_right_1d.png";
-import mongooseRight2d from "../../public/operatives/mongoose_right_2d.png";
-import mongooseRight3d from "../../public/operatives/mongoose_right_3d.png";
+import { ViewProps } from "./types";
+// import rightTurn1d from "../../public/backgrounds/right_turn_1d.png";
+// import rightTurn2d from "../../public/backgrounds/right_turn_2d.png";
+// import leftTurn1d from "../../public/backgrounds/left_turn_1d.png";
+// import leftTurn2d from "../../public/backgrounds/left_turn_2d.png";
+// import bothTurn1d from "../../public/backgrounds/both_turn_1d.png";
+// import bothTurn1dx from "../../public/backgrounds/both_turn_1dx.png";
+// import bothTurn2d from "../../public/backgrounds/both_turn_2d.png";
+// import bothTurn2dx from "../../public/backgrounds/both_turn_2dx.png";
+// import center1d from "../../public/backgrounds/center_1d.png";
+// import center2d from "../../public/backgrounds/center_2d.png";
+// import center2dx from "../../public/backgrounds/center_2dx.png";
+// import center3d from "../../public/backgrounds/center_3d.png";
+// import center3dx from "../../public/backgrounds/center_3dx.png";
+// import center3dx2 from "../../public/backgrounds/center_3dx2.png";
+// import cobraFront1d from "../../public/operatives/cobra_front_1d.png";
+// import cobraFront2d from "../../public/operatives/cobra_front_2d.png";
+// import cobraFront3d from "../../public/operatives/cobra_front_3d.png";
+// import cobraBack1d from "../../public/operatives/cobra_back_1d.png";
+// import cobraBack2d from "../../public/operatives/cobra_back_2d.png";
+// import cobraLeft1d from "../../public/operatives/cobra_left_1d.png";
+// import cobraLeft2d from "../../public/operatives/cobra_left_2d.png";
+// import cobraRight1d from "../../public/operatives/cobra_right_1d.png";
+// import cobraRight2d from "../../public/operatives/cobra_right_2d.png";
+// import cobraRight3d from "../../public/operatives/cobra_right_3d.png";
+// import mongooseFront1d from "../../public/operatives/mongoose_front_1d.png";
+// import mongooseFront2d from "../../public/operatives/mongoose_front_2d.png";
+// import mongooseFront3d from "../../public/operatives/mongoose_front_3d.png";
+// import mongooseBack1d from "../../public/operatives/mongoose_back_1d.png";
+// import mongooseBack2d from "../../public/operatives/mongoose_back_2d.png";
+// import mongooseLeft1d from "../../public/operatives/mongoose_left_1d.png";
+// import mongooseLeft2d from "../../public/operatives/mongoose_left_2d.png";
+// import mongooseRight1d from "../../public/operatives/mongoose_right_1d.png";
+// import mongooseRight2d from "../../public/operatives/mongoose_right_2d.png";
+// import mongooseRight3d from "../../public/operatives/mongoose_right_3d.png";
+const rightTurn1d = "https://i.imgur.com/kKnLGU7.png";
+const rightTurn2d = "https://i.imgur.com/xdVc9MK.png";
+const leftTurn1d = "https://i.imgur.com/e3p24E6.png";
+const leftTurn2d = "https://i.imgur.com/G5yqTJb.png";
+const bothTurn1d = "https://i.imgur.com/cTFsL7K.png";
+const bothTurn1dx = "https://i.imgur.com/6XVrc65.png";
+const bothTurn2d = "https://i.imgur.com/tXDYmuJ.png";
+const bothTurn2dx = "https://i.imgur.com/PaAYn3D.png";
+const center1d = "https://i.imgur.com/d78yJHr.png";
+const center2d = "https://i.imgur.com/7Wu4k4k.png";
+const center2dx = "https://i.imgur.com/wJ01yRC.png";
+const center3d = "https://i.imgur.com/R8jAOx0.png";
+const center3dx = "https://i.imgur.com/Z1h4ydM.png";
+const center3dx2 = "https://i.imgur.com/xQrzjc0.png";
+const cobraFront1d = "https://i.imgur.com/pJ7yDy4.png";
+const cobraFront2d = "https://i.imgur.com/yvQeZDG.png";
+const cobraFront3d = "https://i.imgur.com/m9zwn0m.png";
+const cobraBack1d = "https://i.imgur.com/tRNRcWg.png";
+const cobraBack2d = "https://i.imgur.com/UeGK6Y4.png";
+const cobraLeft1d = "https://i.imgur.com/nHmgiCZ.png";
+const cobraLeft2d = "https://i.imgur.com/jkW5E2o.png";
+const cobraRight1d = "https://i.imgur.com/ysrZ4hY.png";
+const cobraRight2d = "https://i.imgur.com/2mx26On.png";
+const cobraRight3d = "https://i.imgur.com/60FkYSv.png";
+const mongooseFront1d = "https://i.imgur.com/jBNb3rT.png";
+const mongooseFront2d = "https://i.imgur.com/9b85xrA.png";
+const mongooseFront3d = "https://i.imgur.com/5sEx55D.png";
+const mongooseBack1d = "https://i.imgur.com/kw1r8er.png";
+const mongooseBack2d = "https://i.imgur.com/P13KBO9.png";
+const mongooseLeft1d = "https://i.imgur.com/kw1r8er.png";
+const mongooseLeft2d = "https://i.imgur.com/P13KBO9.png";
+const mongooseRight1d = "https://i.imgur.com/jnJqBJ3.png";
+const mongooseRight2d = "https://i.imgur.com/UVXoCJJ.png";
+const mongooseRight3d = "https://i.imgur.com/K5G2ROU.png";
 
 export function View(props: ViewProps) {
   const { location, enemyLocation, enemyVisible, codename } = props;
@@ -45,7 +78,7 @@ export function View(props: ViewProps) {
     ["right", "front", "left", "back"],
   ];
   const faces: {
-    [distance: string]: { [direction: string]: StaticImageData };
+    [distance: string]: { [direction: string]: string };
   } = {
     "1d": {
       front: codename == "mongoose" ? cobraFront1d : mongooseFront1d,
@@ -66,7 +99,7 @@ export function View(props: ViewProps) {
   };
 
   function getOperativeSource() {
-    let source: StaticImageData;
+    let source: string;
     const { orientation } = location;
     const { orientation: eOrientation } = enemyLocation;
     const eFacing: string = relativeOrientations[orientation][eOrientation];
@@ -90,7 +123,7 @@ export function View(props: ViewProps) {
   }
 
   function getBackgroundSource() {
-    let source: StaticImageData;
+    let source: string;
     const { position, orientation } = location;
 
     switch (true) {
@@ -161,12 +194,12 @@ export function View(props: ViewProps) {
 
   return (
     <div className={styles.view}>
-      <Image
+      <img
         alt="A hallway with opening and turns to the left and right"
         src={getBackgroundSource()}
       />
       {enemyVisible !== -1 && (
-        <Image
+        <img
           className={styles.enemy}
           alt="A sillhouette of the enemy operative"
           src={getOperativeSource()}

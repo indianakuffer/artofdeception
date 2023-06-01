@@ -10,10 +10,12 @@ import {
 } from "./map";
 import { ActionProps } from "./types";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import arrow from "../../public/icons/arrow.png";
-import reticule from "../../public/icons/reticule.png";
-import ricochet from "../../public/icons/ricochet.png";
+// import arrow from "../../public/icons/arrow.png";
+// import reticule from "../../public/icons/reticule.png";
+// import ricochet from "../../public/icons/ricochet.png";
+const arrow = "https://i.imgur.com/Cnr23Cy.png";
+const reticule = "https://i.imgur.com/llOpv79.png";
+const ricochet = "https://i.imgur.com/AuZ05hj.png";
 
 export function Actions(props: ActionProps) {
   const {
@@ -131,7 +133,13 @@ export function Actions(props: ActionProps) {
                 key={`turn-${idx}`}
                 onClick={() => code && handleMoveClick(code[0])}
               >
-                <Image alt="arrow" src={arrow} className={arrowStyle} />
+                <img
+                  alt="arrow"
+                  src={arrow}
+                  width="20"
+                  height="20"
+                  className={arrowStyle}
+                />
                 <div className={styles.number}>{code ? code[0] : "\u00A0"}</div>
               </div>
             );
@@ -155,7 +163,7 @@ export function Actions(props: ActionProps) {
                 key={`move-${idx}`}
                 onClick={() => code && handleMoveClick(code[1])}
               >
-                <Image alt="arrow" src={arrow} className={arrowStyle} />
+                <img alt="arrow" src={arrow} className={arrowStyle} />
                 <div className={styles.number}>{code ? code[1] : "\u00A0"}</div>
               </div>
             );
@@ -180,7 +188,7 @@ export function Actions(props: ActionProps) {
         <div className={styles.attackResult}>
           {(hitShot[queuedAction] || hitTakedown[queuedAction]) && (
             <div className={styles.hitSuccess}>
-              <Image alt="hit icon" src={reticule} />
+              <img alt="hit icon" src={reticule} />
               <span className={styles.hitDescription}>
                 Hit! Enemy is injured.
               </span>
@@ -188,7 +196,7 @@ export function Actions(props: ActionProps) {
           )}
           {missedShot[queuedAction] && (
             <div className={styles.hitMissed}>
-              <Image alt="hit icon" src={ricochet} />
+              <img alt="hit icon" src={ricochet} />
               <span className={styles.hitDescription}>
                 Miss! Enemy is alerted.
               </span>

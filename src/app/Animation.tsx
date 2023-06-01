@@ -1,11 +1,16 @@
 import styles from "./page.module.scss";
-import gunAim from "../../public/attacks/gun_aim.png";
-import gunFire from "../../public/attacks/gun_fire.png";
-import fist from "../../public/attacks/fist.png";
-import chop from "../../public/attacks/chop.png";
-import bullet from "../../public/attacks/bullet.png";
-import holes from "../../public/attacks/holes.png";
-import Image from "next/image";
+// import gunAim from "../../public/attacks/gun_aim.png";
+// import gunFire from "../../public/attacks/gun_fire.png";
+// import fist from "../../public/attacks/fist.png";
+// import chop from "../../public/attacks/chop.png";
+// import bullet from "../../public/attacks/bullet.png";
+// import holes from "../../public/attacks/holes.png";
+const gunAim = "https://i.imgur.com/NAKovgH.png";
+const gunFire = "https://i.imgur.com/k2DFwEm.png";
+const fist = "https://i.imgur.com/a6VDwOJ.png";
+const chop = "https://i.imgur.com/tcOeLMB.png";
+const bullet = "https://i.imgur.com/97OktoE.png";
+const holes = "https://i.imgur.com/fV3HJD9.png";
 import { useState } from "react";
 import { AnimationProps } from "./types";
 
@@ -53,12 +58,12 @@ export function Animation(props: AnimationProps) {
               BANG!
             </div>
           )}
-          <Image
+          <img
             className={styles.gun}
             src={gunFiring ? gunFire : gunAim}
             alt="gun"
             onAnimationEnd={gunAnimationEnd}
-          ></Image>
+          />
         </div>
       )}
       {showAnimation == "chop" && (
@@ -71,12 +76,12 @@ export function Animation(props: AnimationProps) {
               CHOP!
             </div>
           )}
-          <Image
+          <img
             className={styles.fist}
             src={handChopping ? chop : fist}
             alt="chop"
             onAnimationEnd={chopAnimationEnd}
-          ></Image>
+          />
         </div>
       )}
       {showAnimation == "miss" && (
@@ -89,12 +94,12 @@ export function Animation(props: AnimationProps) {
               MISS!
             </div>
           )}
-          <Image
+          <img
             className={styles.bullet}
             src={bulletHit ? holes : bullet}
             alt="bullet"
             onAnimationEnd={missAnimationEnd}
-          ></Image>
+          />
         </div>
       )}
     </div>
