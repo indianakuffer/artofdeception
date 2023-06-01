@@ -127,11 +127,20 @@ export function Actions(props: ActionProps) {
                 : direction == "Right"
                 ? styles.right
                 : styles.back;
+            const gridPos =
+              direction == "Left"
+                ? 2
+                : direction == "Forward"
+                ? 3
+                : direction == "Right"
+                ? 5
+                : 4;
             return (
               <div
                 className={`${styles.set} ${code ? styles.clickable : ""}`}
                 key={`turn-${idx}`}
                 onClick={() => code && handleMoveClick(code[0])}
+                style={{ order: gridPos }}
               >
                 <img
                   alt="arrow"
@@ -157,11 +166,20 @@ export function Actions(props: ActionProps) {
                 : direction == "Right"
                 ? styles.right
                 : styles.back;
+            const gridPos =
+              direction == "Left"
+                ? 2
+                : direction == "Forward"
+                ? 3
+                : direction == "Right"
+                ? 5
+                : 4;
             return (
               <div
                 className={`${styles.set} ${code ? styles.clickable : ""}`}
                 key={`move-${idx}`}
                 onClick={() => code && handleMoveClick(code[1])}
+                style={{ order: gridPos }}
               >
                 <img alt="arrow" src={arrow} className={arrowStyle} />
                 <div className={styles.number}>{code ? code[1] : "\u00A0"}</div>
