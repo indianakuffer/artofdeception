@@ -1,95 +1,96 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import styles from "./page.module.scss";
+import { useState } from "react";
+import Selection from "./Selection";
+import { Game } from "./Game";
+import { Codename } from "./types";
+import cover from "../../public/backgrounds/cover.png";
+import Image from "next/image";
+import cobraWin from "../../public/backgrounds/cobra_win.png";
+import mongooseWin from "../../public/backgrounds/mongoose_win.png";
+import loseArt from "../../public/backgrounds/lose_art.png";
 
 export default function Home() {
+  const [codename, setCodename] = useState<Codename | "">("");
+  const [showTitle, setShowTitle] = useState(true);
+  const [showSelection, setShowSelection] = useState(false);
+  const [showMission, setShowMission] = useState(false);
+  const [win, setWin] = useState<Codename | "">("");
+  const blurb = `Greetings, agent. As you are well aware, the secrets of two powerful spy agencies clash within the confines of the captivating Lumina Modern Art Museum.
+  
+  Your mission, should you choose to accept it, is to outwit your opponent, navigate these treacherous halls, and neutralize the opposing spy before they you. The fate of our agency -- the world, hangs by a thread.
+  
+  Prepare yourself to enter a world of beauty and intrigue, where the shimmering artworks become both your refuge and your playground. But beware, for every step you take could be your last. Use every resource and cunning strategy at your disposal to outmaneuver your rival and strike when the time is right.
+  
+  Good luck, the game is about to begin.`;
+  const instructions = ` This game requires two to play. Every turn, you must take one action: Look, Move, or Attack if possible. Reveal to your enemy your action, and enter theirs.`;
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      {showTitle && !codename && (
+        <div className={styles.title}>
+          <Image
+            className={`${!showSelection && styles.blurred}`}
+            alt="cover image"
+            src={cover}
+          />
+          {!showSelection && (
+            <div className={styles.gameName}>The Art of Deception</div>
+          )}
+          {showMission && (
+            <div className={styles.missionDetails}>
+              <div className={`${styles.details} ${styles.blurb}`}>{blurb}</div>
+              <div className={`${styles.details} ${styles.instructions}`}>
+                {instructions}
+              </div>
+            </div>
+          )}
+          {!showSelection && (
+            <button
+              className={styles.enterButton}
+              onClick={() => {
+                setShowSelection(true);
+                setShowMission(false);
+              }}
+            >
+              Enter
+            </button>
+          )}
+          {!showSelection && !showMission && (
+            <button
+              className={styles.enterButton}
+              onClick={() => setShowMission(true)}
+            >
+              Mission Details
+            </button>
+          )}
+          {showSelection && <Selection setCodename={setCodename}></Selection>}
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      )}
+      {codename && !win && (
+        <Game win={win} setWin={setWin} codename={codename}></Game>
+      )}
+      {win && (
+        <div className={styles.winScreen}>
+          <Image
+            alt="game end art"
+            src={
+              win == codename
+                ? codename == "cobra"
+                  ? cobraWin
+                  : mongooseWin
+                : loseArt
+            }
+          />
+          {win == codename && (
+            <div className={styles.gameoverText}>You win!</div>
+          )}
+          {win !== codename && (
+            <div className={styles.gameoverText}>You lose</div>
+          )}
+        </div>
+      )}
     </main>
-  )
+  );
 }

@@ -1,0 +1,465 @@
+$mongoose-red: #ba1919;
+$cobra-blue: #3847a5;
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    cursor: pointer;
+    padding: 4px 8px;
+    border: none;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    * {
+      cursor: pointer;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}
+
+.title {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+    transition: filter 0.5s ease-in-out;
+  }
+
+  img.blurred {
+    filter: blur(5px);
+  }
+
+  .gameName {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding: 4px 8px;
+    max-width: 80vw;
+    text-align: center;
+    margin-bottom: 10vh;
+  }
+
+  .enterButton {
+    font-size: 20px;
+    padding: 4px 8px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-bottom: 12px;
+    &:hover {
+      filter: invert(1);
+    }
+  }
+}
+
+.selection {
+  display: flex;
+  gap: 15vw;
+  transform: translateY(30vh);
+
+  button {
+    font-size: 20px;
+    padding: 4px 8px;
+    border: none;
+    background-color: black;
+    color: white;
+
+    &.cobra:hover {
+      background-color: $cobra-blue;
+    }
+
+    &.mongoose:hover {
+      background-color: $mongoose-red;
+    }
+  }
+}
+
+.missionDetails {
+  margin-bottom: 20px;
+
+  .details {
+    white-space: pre-line;
+    padding: 12px 20px;
+    line-height: 1.4;
+    background-color: black;
+    letter-spacing: 2px;
+    color: white;
+    width: 600px;
+    max-width: 80vw;
+    font-weight: 300;
+  }
+}
+
+.winScreen {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadein 2s ease-out 1000ms 1 normal both;
+  filter: brightness(0) blur(10px);
+
+  @keyframes fadein {
+    0% {
+      filter: brightness(0) blur(10px);
+    }
+    100% {
+      filter: brightness(1) blur(0px);
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .gameoverText {
+    padding: 12px 20px;
+    background-color: black;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: 500;
+    z-index: 1;
+    text-transform: uppercase;
+    animation: fadein 2s ease-out 1000ms 1 normal both;
+  }
+}
+
+.game {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+
+  .view {
+    position: relative;
+    width: 600px;
+    max-width: 70vw;
+    aspect-ratio: 3 / 4;
+    border: 1px solid black;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .enemy {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .landmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .actionWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 300px;
+    padding: 12px;
+  }
+
+  .turnActions,
+  .moveActions {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+
+    .actionName {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+
+  .set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+    opacity: 0.2;
+    gap: 8px;
+    &.clickable {
+      opacity: 1;
+      cursor: pointer;
+      &:hover {
+        font-weight: 600;
+      }
+    }
+
+    img {
+      height: 20px;
+      width: 20px;
+      &.right {
+        transform: rotate(90deg);
+      }
+      &.back {
+        transform: rotate(180deg);
+      }
+      &.left {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  .prompt {
+    position: absolute;
+    width: 400px;
+    max-width: 80vw;
+    max-height: 50vh;
+    padding: 24px 24px 12px 24px;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    gap: 8px;
+    &.hidden {
+      visibility: hidden;
+    }
+
+    .moveReminder {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hitSuccess,
+    .hitMissed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      img {
+        display: block;
+        height: 60px;
+        width: 60px;
+      }
+    }
+
+    input {
+      padding: 4px 8px;
+      border: 1px solid black;
+      border-radius: 4px;
+      outline-color: var(--playerColor);
+      font-size: 16px;
+    }
+
+    .goButton {
+      font-size: 16px;
+      background-color: var(--playerColor);
+      color: white;
+      align-self: flex-end;
+    }
+  }
+
+  .attack {
+    cursor: pointer;
+    background-color: var(--playerColor);
+    color: white;
+    font-weight: 600;
+    border: none;
+    font-size: 24px;
+    padding: 4px 8px;
+    position: absolute;
+    transform: skew(-15deg) translateY(-10vh);
+  }
+  .healthWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-end;
+    .portrait {
+      height: 100px;
+      width: auto;
+    }
+    .health {
+      display: flex;
+      gap: 4px;
+
+      .heart {
+        height: 20px;
+        width: 25px;
+      }
+    }
+  }
+}
+
+.animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .animationContents {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    animation: expand 0.2s ease-out 0ms 1 normal both;
+
+    @keyframes expand {
+      0% {
+        max-height: 0px;
+      }
+      100% {
+        max-height: 200px;
+      }
+    }
+
+    &.bangAnimation {
+      .gun {
+        object-fit: contain;
+        width: 100%;
+        height: 200%;
+        object-position: right;
+
+        animation: slide 0.5s ease 0ms 1 normal both;
+        @keyframes slide {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+      }
+
+      .bang {
+        position: absolute;
+        top: 0px;
+        left: 10%;
+        font-size: 200px;
+        line-height: 1;
+
+        animation: bangSlide 1s ease-out 1 normal both;
+        @keyframes bangSlide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(20px);
+          }
+        }
+      }
+    }
+
+    &.chopAnimation {
+      .fist {
+        object-fit: contain;
+        width: 100%;
+        height: 120%;
+        object-position: right;
+
+        animation: slide 0.5s ease 0ms 1 normal both;
+        @keyframes slide {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+      }
+
+      .chop {
+        position: absolute;
+        top: 0px;
+        left: 10%;
+        font-size: 200px;
+        line-height: 1;
+
+        animation: bangSlide 1s ease-out 1 normal both;
+        @keyframes bangSlide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(20px);
+          }
+        }
+      }
+    }
+
+    &.missAnimation {
+      .bullet {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        object-position: left;
+
+        animation: slide 0.3s linear 0ms 1 normal both;
+        @keyframes slide {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+      }
+
+      .miss {
+        position: absolute;
+        top: 0px;
+        right: 10%;
+        font-size: 200px;
+        line-height: 1;
+
+        animation: bangSlide 1s ease-out 1 normal both;
+        @keyframes bangSlide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(20px);
+          }
+        }
+      }
+    }
+  }
+}
